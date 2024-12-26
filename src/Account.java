@@ -29,7 +29,7 @@ public class Account {
     public void deposit(double amount) {
         balance += amount;
     }
-
+//
     // Метод для снятия средств
     public void withdraw(double amount) {
         if (amount <= balance) {

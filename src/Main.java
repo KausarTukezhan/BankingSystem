@@ -10,7 +10,7 @@ public class Main {
 
         // Создаем банк
         Bank bank = new Bank("MyBank");
-
+//
         // Добавляем клиентов в банк
         bank.addCustomer(customer1);
         bank.addCustomer(customer2);

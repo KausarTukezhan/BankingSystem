@@ -15,7 +15,7 @@ public class Bank {
     public void addCustomer(Customer customer) {
         customers.add(customer);
     }
-
+//
     // Метод для отображения всех клиентов
     public void displayCustomers() {
         System.out.println("Список клиентов банка " + name + ":");
