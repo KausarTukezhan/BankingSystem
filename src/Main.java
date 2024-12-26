@@ -1,15 +1,30 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Создаем счета
+        Account account1 = new Account(101, 5000);
+        Account account2 = new Account(102, 10000);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Создаем клиентов
+        Customer customer1 = new Customer("Alice", "alice@example.com", account1);
+        Customer customer2 = new Customer("Bob", "bob@example.com", account2);
+
+        // Создаем банк
+        Bank bank = new Bank("MyBank");
+
+        // Добавляем клиентов в банк
+        bank.addCustomer(customer1);
+        bank.addCustomer(customer2);
+
+        // Отображаем клиентов банка
+        bank.displayCustomers();
+
+        // Выполняем операции с клиентскими счетами
+        account1.deposit(2000);
+        account2.withdraw(3000);
+
+        // Сравниваем счета
+        System.out.println("Обновленная информация о счетах:");
+        System.out.println(account1);
+        System.out.println(account2);
     }
 }
