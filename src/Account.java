@@ -1,9 +1,14 @@
+import java.util.Objects;
+
 public class Account {
     private int accountNumber; // Номер счета
     private double balance;    // Баланс счета
 
     // Конструктор
     public Account(int accountNumber, double balance) {
+        if (balance < 0) {
+            throw new IllegalArgumentException("Balance cannot be negative");
+        }
         this.accountNumber = accountNumber;
         this.balance = balance;
     }
@@ -22,29 +27,48 @@ public class Account {
     }
 
     public void setBalance(double balance) {
+        if (balance < 0) {
+            throw new IllegalArgumentException("Balance cannot be negative");
+        }
         this.balance = balance;
     }
 
     // Метод для пополнения счета
     public void deposit(double amount) {
-        balance += amount;
-    }
-//
-    // Метод для снятия средств
-    public void withdraw(double amount) {
-        if (amount <= balance) {
-            balance -= amount;
+        if (amount > 0) {
+            balance += amount;
         } else {
-            System.out.println("Недостаточно средств!");
+            System.out.println("Amount to deposit must be positive");
         }
     }
 
-    // Переопределение метода toString для удобного вывода
+    // Метод для снятия средств
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient funds or invalid amount!");
+        }
+    }
+
     @Override
     public String toString() {
         return "Account{" +
                 "accountNumber=" + accountNumber +
                 ", balance=" + balance +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return accountNumber == account.accountNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountNumber);
     }
 }
